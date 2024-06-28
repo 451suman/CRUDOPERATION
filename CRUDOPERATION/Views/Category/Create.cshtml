@@ -1,0 +1,36 @@
+﻿@model CRUDOPERATION.Models.Category
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<form asp-action="Create" method="post">
+
+    <div asp-validation-summary="All"> </div>  
+    <!--display all validation errors in list -->
+
+    <div class="form-floating mb-3">
+        <input asp-for="Name" type="text" class="form-control" id="floatingInputName" placeholder="Enter Name">
+        <label asp-for="Name" for="floatingInputName">Name</label>
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <div class="form-floating mb-3">
+        <input asp-for="DisplayOrder" type="number" class="form-control" id="floatingInputDisplayOrder" placeholder="Enter Display Order">
+        <label asp-for="DisplayOrder" for="floatingInputDisplayOrder">Display Order</label>
+        <span asp-validation-for="DisplayOrder" class="text-danger"></span>
+    </div>
+
+    <div>
+        <button type="submit" class="btn btn-primary">Create</button>
+        <a asp-controller="Category" asp-action="Index" class="btn btn-secondary">Back To List</a>
+    </div>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
