@@ -68,9 +68,6 @@ namespace CRUDOPERATION.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Edit(Category obj)
         {
-
-
-
             if (ModelState.IsValid)
             {
                 /* if (obj.Name == "suman")
@@ -87,6 +84,44 @@ namespace CRUDOPERATION.Controllers
             // stay on same page
 
         }
+
+
+        //Delete
+        public IActionResult Delete(int? id)
+        {
+            if (id == null || id == 0)
+            {
+                return RedirectToAction("Index");
+            }
+            var categoryFromDB = _db.categories.Find(id);
+            /*var categoryFormDbFirst = _db.categories.FirstOrDefault(c => c.Id == id);
+            var categoryFormDbFirst = _db.categories.SingleOrDefault(c => c.Id == id); */
+            if (categoryFromDB == null)
+            {
+                return NotFound();
+            }
+            return View(categoryFromDB);
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult DeletePost(int? id)
+        {
+           var obj = _db.categories.Find(id);
+            if (obj == null)
+            {
+                return NotFound();
+            }
+                _db.categories.Remove(obj);
+                _db.SaveChanges();
+                return RedirectToAction("Index");
+           
+           
+
+        }
+
+
     }
    
 }
