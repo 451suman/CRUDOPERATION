@@ -10,7 +10,7 @@
         <div class="col">
             <h1>Category list</h1>
         </div>
-        <div class="col">   </div>
+        <div class="col">   </div><!-- empty colum -->
         <div class="col">   </div>
         <div class="col">   </div>
         <div class="col">
@@ -21,11 +21,12 @@
 
 
 
-<table class="table table-hover table-striped ">
+<table class="table table-hover table-striped  ">
     <thead>
         <tr>
             <th scope="col">Category Name</th>
             <th scope="col">Display Order</th>
+            <th scope="col"></th>
            
         </tr>
     </thead>
@@ -36,6 +37,10 @@
                
                 <td>@obj.Name</td>
                 <td>@obj.DisplayOrder</td>
+                <td width="30%">
+                    <a class="btn btn-success" asp-action="Edit" asp-controller="Category" asp-route-id="@obj.Id"><i class="bi bi-pencil-square"> Edit</i></a>
+                    <a class="btn btn-danger" asp-controller="Category" asp-route-id="@obj.Id"><i class="bi bi-trash">Delete</i></a>
+                </td>
                 
             </tr>
         }
