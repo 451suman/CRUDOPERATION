@@ -78,7 +78,7 @@ namespace CRUDOPERATION.Controllers
                      ModelState.AddModelError("Name", "The Name cannot be 'suman'.");
                      return View(obj); // Return the view with errors
                  }*/
-                _db.categories.Add(obj);
+                _db.categories.Update(obj);
                 _db.SaveChanges();
                 return RedirectToAction("Index");
             }
